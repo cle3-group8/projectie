@@ -6,7 +6,7 @@ function updatePositions(){
 
 	for (var player in players){
 		//Color
-		var color = players[player][0].color;
+		var color = players[player][players[player].length - 1].color;
 		//Last position Circle
 		x = players[player][players[player].length - 1].x;
 		y = players[player][players[player].length - 1].y;
@@ -35,6 +35,9 @@ function updatePositions(){
 
 				//console.log("posA: x="+ posA_x + ", y=" + posA_y);
 				//console.log("posB: x="+ posB_x + ", y=" + posB_y);
+				//TODO: Remove new color every position
+
+				var color = players[player][count].color;
 
 
 				ctx.beginPath();

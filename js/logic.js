@@ -21,8 +21,10 @@ function updatePlayer(playerObject) {
 			}
 		]
 	}
-
-	if (players[playerObject.id].length > 20){
+	//Calculate path amount of positions to be shown
+	var maxPositions = pathFadeTime * (1000 / socketTransmitionDelay);
+	console.log("maxPositions = "+ maxPositions);
+	if (players[playerObject.id].length > maxPositions){
 		players[playerObject.id].shift();
 	}
 
