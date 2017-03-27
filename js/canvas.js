@@ -24,21 +24,21 @@ function updatePositions(){
 	    //Each position
 		var count = 0;
 		for (var pos of players[player]){
-			if (count > 1){
+			if (count >= 1){
+				console.log("pos =" , pos);
 				//Previous pos
 				var posA_x = players[player][count-1].x;
-				var posA_y = players[player][count-1].x;
+				var posA_y = players[player][count-1].y;
 
 				//This pos
 				var posB_x = players[player][count].x;
-				var posB_y = players[player][count].x;
+				var posB_y = players[player][count].y;
 
 				//console.log("posA: x="+ posA_x + ", y=" + posA_y);
 				//console.log("posB: x="+ posB_x + ", y=" + posB_y);
 				//TODO: Remove new color every position
 
 				var color = players[player][count].color;
-
 
 				ctx.beginPath();
 				ctx.moveTo(posA_x,posA_y);
@@ -47,8 +47,15 @@ function updatePositions(){
 				ctx.lineWidth = pathWidth;
 				ctx.strokeStyle = color;
 				ctx.stroke();
-			}
 
+				//Text
+      			ctx.strokeStyle = 'black';
+				ctx.font = "15px Arial";
+      			ctx.lineWidth = 1;
+				ctx.fillText("ID= "+players[player][count].id,posB_x,posB_y);
+				ctx.strokeText("ID= "+players[player][count].id,posB_x,posB_y);
+
+			}
 			count++;
 		}
 	}
