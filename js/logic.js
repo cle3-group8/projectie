@@ -28,5 +28,22 @@ function updatePlayer(playerObject) {
 		players[playerObject.id].shift();
 	}
 
+	//Debug
+	console.log(players[playerObject.id]);
+
 	updatePositions();
+}
+
+
+function removePlayer(playerObject) {
+	if (players[playerObject.id]){
+		//Push new position to existing player object
+		players[playerObject.id].push(
+			{
+				"color": playerObject.color,
+				"x": playerObject.x,
+				"y": playerObject.y
+			}
+		)
+	}
 }
