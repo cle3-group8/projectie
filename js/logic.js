@@ -2,36 +2,31 @@
 
 function updatePlayer(playerObject) {
 
-	if (players[playerObject.id]){
-		//Push new position to existing player object
-		players[playerObject.id].push(
-			{
-				"color": playerObject.color,
-				"id": playerObject.id,
-				"x": playerObject.x,
-				"y": playerObject.y
-			}
-		)
-	}else{
-		//Create new player object
-		players[playerObject.id] = [
-			{
-				"color": playerObject.color,
-				"id": playerObject.id,
-				"x": playerObject.x,
-				"y": playerObject.y
-			}
-		]
+	if (!players[playerObject.playerid]){
+		players[playerObject.playerid] = [];
 	}
+
+	console.log("======= playerObject.id"+playerObject.playerid);
+	//Push new position to existing player object
+	players[playerObject.playerid].push(
+		{
+			"color": playerObject.color,
+			"playerid": playerObject.playerid,
+			"x": playerObject.x,
+			"y": playerObject.y
+		}
+	)
+	console.log("======= players[] ",players[playerObject.playerid]);
+
 	//Calculate path amount of positions to be shown
 	var maxPositions = pathFadeTime * (1000 / socketTransmitionDelay);
 	console.log("maxPositions = "+ maxPositions);
-	if (players[playerObject.id].length > maxPositions){
-		players[playerObject.id].shift();
+	if (players[playerObject.playerid].length > maxPositions){
+		players[playerObject.playerid].shift();
 	}
 
 	updatePositions();
-	checkCollisionForPlayer(playerObject.id);
+	checkCollisionForPlayer(playerObject.playerid);
 }
 
 
@@ -43,7 +38,8 @@ function removePlayer(playerId) {
 }
 
 function checkCollisionForPlayer(playerId){
-	mainPlayer = players[playerId];
+	var mainPlayer = players[playerId];
+	console.log("mainPlayer = ", mainPlayer);
 
 	//Get latest line from mainPlayer
 	if ( (mainPlayer[(mainPlayer.length-1)] != undefined) && (mainPlayer[(mainPlayer.length-2)] != undefined) ){
@@ -59,23 +55,29 @@ function checkCollisionForPlayer(playerId){
 			//Create local player object
 			player = players[player];
 
+			//console.log("mainplayer = ",mainPlayer);
+			//console.log("player = ",player);
+
+			//Skip own path (cannot collide with itself)
+			if (player[0].id = mainPlayer.id){
+				console.log("skipping self");
+				continue;
+			}
+
+			console.log("playerid= "+player[0].id);
+
 		    //TODO: Loop all lines of loop-player
+			for (var i = 0; i < player.length-1; i++) {
+				if ( (player[i] != undefined) && (player[i+1] != undefined) ){
 
-				//TODO: Skip own lines (cannot collide with itself)
-				if (player.id = mainPlayer.id){
-					console.log("skipping self");
-					continue;
+					//Get latest line from loop-player
+					p2_x = player[i].x;
+					p2_y = player[i].y;
+					p3_x = player[i+1].x;
+					p3_y = player[i+1].y;
+
+					console.log("player ("+player[i].id+"): 2x=" + p2_x + ", 2y=" + p2_y + " | 3x=" + p3_x + ", 3y=" + p3_y);
 				}
-
-			if ( (player[(player.length-1)] != undefined) && (player[(player.length-2)] != undefined) ){
-
-				//Get latest line from loop-player
-				p2_x = player[(player.length-1)].x;
-				p2_y = player[(player.length-1)].y;
-				p3_x = player[(player.length-2)].x;
-				p3_y = player[(player.length-2)].y;
-
-				console.log("player ("+player.id+"): 2x=" + p2_x + ", 2y=" + p2_y + " | 3x=" + p3_x + ", 3y=" + p3_y);
 			}
 		}
 	}

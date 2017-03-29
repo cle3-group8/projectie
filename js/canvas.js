@@ -4,6 +4,10 @@ function updatePositions(){
 	//Clear canvas
 	ctx.clearRect(0, 0, mycanvas.width, mycanvas.height);
 
+	//BLack backgroun
+	ctx.fillStyle='black';
+	ctx.fillRect(0,0,mycanvas.width,mycanvas.height);
+
 	for (var player in players){
 		//Color
 		var color = players[player][players[player].length - 1].color;
@@ -17,7 +21,7 @@ function updatePositions(){
 		ctx.fillStyle = color;
 		ctx.fill();
 		ctx.lineWidth = lineWidth;
-		ctx.strokeStyle = '#003300';
+		ctx.strokeStyle = '#e5e5e5';
 		ctx.closePath();
 		ctx.stroke();
 
@@ -25,7 +29,6 @@ function updatePositions(){
 		var count = 0;
 		for (var pos of players[player]){
 			if (count >= 1){
-				console.log("pos =" , pos);
 				//Previous pos
 				var posA_x = players[player][count-1].x;
 				var posA_y = players[player][count-1].y;
@@ -48,13 +51,13 @@ function updatePositions(){
 				ctx.strokeStyle = color;
 				ctx.stroke();
 
-				//Text
+				/*//Text
       			ctx.strokeStyle = 'black';
 				ctx.font = "15px Arial";
       			ctx.lineWidth = 1;
 				ctx.fillText("ID= "+players[player][count].id,posB_x,posB_y);
 				ctx.strokeText("ID= "+players[player][count].id,posB_x,posB_y);
-
+				*/
 			}
 			count++;
 		}
