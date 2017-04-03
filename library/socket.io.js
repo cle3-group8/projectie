@@ -402,18 +402,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	/**
-	 * Invokes `console.log()` when available.
-	 * No-op when `console.log` is not a "function".
+	 * Invokes `//console.log()` when available.
+	 * No-op when `//console.log` is not a "function".
 	 *
 	 * @api public
 	 */
 
 	function log() {
 	  // this hackery is required for IE8/9, where
-	  // the `console.log` function doesn't have 'apply'
+	  // the `//console.log` function doesn't have 'apply'
 	  return 'object' === typeof console
-	    && console.log
-	    && Function.prototype.apply.call(console.log, console, arguments);
+	    && //console.log
+	    && Function.prototype.apply.call(//console.log, console, arguments);
 	}
 
 	/**
@@ -785,7 +785,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // apply env-specific formatting
 	    args = exports.formatArgs.apply(self, args);
 
-	    var logFn = enabled.log || exports.log || console.log.bind(console);
+	    var logFn = enabled.log || exports.log || //console.log.bind(console);
 	    logFn.apply(self, args);
 	  }
 	  enabled.enabled = true;
@@ -1538,18 +1538,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	/**
-	 * Invokes `console.log()` when available.
-	 * No-op when `console.log` is not a "function".
+	 * Invokes `//console.log()` when available.
+	 * No-op when `//console.log` is not a "function".
 	 *
 	 * @api public
 	 */
 
 	function log() {
 	  // this hackery is required for IE8/9, where
-	  // the `console.log` function doesn't have 'apply'
+	  // the `//console.log` function doesn't have 'apply'
 	  return 'object' === typeof console
-	    && console.log
-	    && Function.prototype.apply.call(console.log, console, arguments);
+	    && //console.log
+	    && Function.prototype.apply.call(//console.log, console, arguments);
 	}
 
 	/**
@@ -1727,7 +1727,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if ('function' === typeof exports.formatArgs) {
 	      args = exports.formatArgs.apply(self, args);
 	    }
-	    var logFn = enabled.log || exports.log || console.log.bind(console);
+	    var logFn = enabled.log || exports.log || //console.log.bind(console);
 	    logFn.apply(self, args);
 	  }
 	  enabled.enabled = true;

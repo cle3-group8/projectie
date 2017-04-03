@@ -4,6 +4,7 @@ var ctx = mycanvas.getContext('2d');
 
 //Vars
 var players = {};
+var removedPlayers = [];
 
 //Settings
 var pathWidth= 10;
@@ -13,4 +14,4 @@ var socketTransmitionDelay = 100; //ms
 var pathFadeTime = 15; //seconds
 
 //Simulation
-simulation();
+//simulation();

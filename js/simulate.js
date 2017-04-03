@@ -1,6 +1,6 @@
 
 function simulation() {
-	console.log("Starting simulation...");
+	//console.log("Starting simulation...");
     var p1_id = 1;
 	var p1_x = 0;
 	var p1_y = 0;
@@ -15,7 +15,7 @@ function simulation() {
 		p1_x += 5;
 		p1_y += 5;
 
-		console.log("p1_id= "+p1_id);
+		//console.log("p1_id= "+p1_id);
 
 		//Create object
 		var playerObject1 = {
