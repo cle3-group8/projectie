@@ -32,7 +32,7 @@ function updatePlayer(playerObject) {
 	}
 
 	updatePositions();
-	//checkCollisionForPlayer(playerObject.playerid);
+	checkCollisionForPlayer(playerObject.playerid);
 }
 
 
@@ -42,7 +42,11 @@ function removePlayer(playerId) {
 		delete players[playerId];
 		removedPlayers.push("" + playerId);
 	}
-	//TODO: Socket send player removal
+
+	//Socket send player removal
+	socket.emit("playerdies", {
+		playerid: playerId
+	});
 }
 
 function checkCollisionForPlayer(playerId){

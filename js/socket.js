@@ -6,3 +6,8 @@ socket.on("playermove", function(data){
 		updatePlayer(player);
 	}
 });
+
+socket.on("playerleft", function(playerId){
+	console.log("received playerleft: "+playerId);
+	removePlayer(playerId);
+});
