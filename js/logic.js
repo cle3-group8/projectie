@@ -31,7 +31,6 @@ function updatePlayer(playerObject) {
 		players[playerObject.playerid].locations.shift();
 	}
 
-	updatePositions();
 	checkCollisionForPlayer(playerObject.playerid);
 }
 

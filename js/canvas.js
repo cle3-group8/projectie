@@ -1,6 +1,9 @@
+//Update Loop
+window.setInterval(function () {
+	updateDisplay();
+}, 50);
 
-
-function updatePositions(){
+function updateDisplay(){
 	//Clear canvas
 	ctx.clearRect(0, 0, mycanvas.width, mycanvas.height);
 
